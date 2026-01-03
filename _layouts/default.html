@@ -1,6 +1,10 @@
 <!DOCTYPE html>
+
 <html>
+
   <head>
+      {% include cookieconsent.html %}
+
     <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
 
     {% include meta.html %}
