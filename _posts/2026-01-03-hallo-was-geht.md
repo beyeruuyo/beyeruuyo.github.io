@@ -1,6 +1,6 @@
 ---
 layout: post
-title: You're up and running!
+title: Gay/Github
 ---
 ## Die Privatisierung der Eigenleistung: GitHubs Geniestreich 2026
 Es war einmal eine Plattform namens GitHub. Was als pragmatische Code-Ablage begann, mutierte unter Microsofts Ägide zügig zum DevOps-Totalitarismus. GitHub Actions wurde das goldene Kalb der Branche: schick, komfortabel und - dank der aggressiven Integration in die „Plattformökonomie“ – in Rekordzeit für viele alternativlos.
