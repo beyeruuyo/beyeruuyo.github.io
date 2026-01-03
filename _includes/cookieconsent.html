@@ -1,0 +1,21 @@
+<!-- Cookie Consent by Osano -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+  window.cookieconsent.initialise({
+    palette: {
+      popup: { background: "#252e39" },
+      button: { background: "#14a7d0" }
+    },
+    theme: "classic",
+    position: "bottom-right",
+    content: {
+      message: "Diese Website verwendet Cookies, um bestmögliche Funktionalität zu bieten.",
+      dismiss: "Verstanden!",
+      link: "Mehr Infos",
+      href: "/datenschutz.html"  // Link zu deiner Datenschutzerklärung
+    }
+  });
+});
+</script>
