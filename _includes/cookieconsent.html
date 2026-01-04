@@ -58,6 +58,11 @@
 </div>
 
 <script>
+// Hilfsfunktion, um den aktuellen Pfad zu prüfen
+function isDatenschutzPage() {
+  return window.location.pathname === "/datenschutz.html";
+}
+
 function setCookie(n, v, d) {
   var date = new Date();
   date.setTime(date.getTime() + (d*24*60*60*1000));
@@ -84,6 +89,17 @@ function insertVGWortPixel() {
 }
 
 window.addEventListener('DOMContentLoaded', function(){
+  if(isDatenschutzPage()) {
+    // Kein Banner, kein Overlay, volle Bedienbarkeit auf /datenschutz.html
+    document.getElementById('cookie-banner').style.display = "none";
+    var overlay = document.getElementById('consent-overlay');
+    if(overlay) overlay.style.display = "none";
+    document.body.style.overflow = '';
+    var na = document.getElementById('no-access');
+    if(na) na.style.display = "none";
+    return;
+  }
+
   if(getCookie('vgw_consent') === "yes") {
     insertVGWortPixel();
   } else if(getCookie('vgw_consent') === "no") {
