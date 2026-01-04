@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "dummy"
-date: 2026-01-16
+title: "Dummy"
+date: 2026-01-05
 ---
-Bald richtig sehr sicke Projekte
+Bald richtig sicke Projekte
