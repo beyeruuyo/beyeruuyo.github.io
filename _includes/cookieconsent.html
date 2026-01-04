@@ -1,24 +1,43 @@
 <style>
-#cookie-banner {
-  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-  background: #222; color: #fff; padding: 20px 30px; border-radius: 8px;
-  box-shadow: 0 0 10px #0007; z-index: 9999; font-size: 15px;
-  display: none; max-width: 90vw;
+#consent-overlay {
+  display: none;
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.65); z-index: 9998;
 }
-#cookie-banner button { margin: 0 5px; padding: 6px 18px; border-radius: 5px; border: none; cursor: pointer; }
+#cookie-banner {
+  position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%);
+  background: #222; color: #fff; padding: 40px 60px;
+  border-radius: 18px; box-shadow: 0 0 24px #000b; z-index: 9999;
+  font-size: 2rem; display: none; max-width: 90vw; min-width: 550px;
+  min-height: 130px; text-align: center;
+}
+#cookie-banner button {
+  margin: 18px 18px 0 18px;
+  padding: 18px 36px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
 #cookie-accept { background: #14a7d0; color: #fff; }
 #cookie-decline { background: #888; color: #fff; }
+#cookie-banner a { color: #fff; text-decoration: underline; font-weight: bold; }
 </style>
 
+<div id="consent-overlay"></div>
+
 <div id="cookie-banner">
-  Diese Website nutzt Cookies für VG Wort (Reichweitenmessung). <a href="/datenschutz.html" style="color:#fff;text-decoration:underline;">Mehr Infos</a><br>
+  Diese Website nutzt Cookies für VG Wort (Reichweitenmessung).
+  <a href="/datenschutz.html" target="_blank">Mehr Infos</a><br>
   <button id="cookie-accept">Akzeptieren</button>
   <button id="cookie-decline">Ablehnen</button>
 </div>
 
 <script>
 function setCookie(n, v, d) {
-  var date = new Date(); date.setTime(date.getTime() + (d*24*60*60*1000));
+  var date = new Date();
+  date.setTime(date.getTime() + (d*24*60*60*1000));
   document.cookie = n + "=" + v + "; expires=" + date.toUTCString() + "; path=/";
 }
 function getCookie(n) {
@@ -32,15 +51,14 @@ function getCookie(n) {
 }
 
 function insertVGWortPixel() {
-  // Testbild – zeigt sichtbar das GitHub-Logo:
+  // Testbild – bitte durch deinen echten VG-Wort-Pixel ersetzen!
   var src = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png";
   var img = document.createElement("img");
   img.src = src;
-  img.style = "width:80px;height:80px;position:fixed;bottom:80px;left:30px;z-index:99999;border-radius:12px;border:2px solid #fff;box-shadow:0 2px 8px #0005;";
+  img.style = "width:80px;height:80px;position:fixed;bottom:160px;left:30px;z-index:99999;border-radius:12px;border:2px solid #fff;box-shadow:0 2px 8px #0005;";
   img.alt = "Testbild";
   document.body.appendChild(img);
 }
-
 
 window.addEventListener('DOMContentLoaded', function(){
   if(getCookie('vgw_consent') === "yes") {
@@ -49,15 +67,21 @@ window.addEventListener('DOMContentLoaded', function(){
     // nichts tun
   } else {
     document.getElementById('cookie-banner').style.display = "block";
+    document.getElementById('consent-overlay').style.display = "block";
+    document.body.style.overflow = 'hidden';
   }
   document.getElementById('cookie-accept').onclick = function() {
     setCookie('vgw_consent', "yes", 365);
     document.getElementById('cookie-banner').style.display = "none";
+    document.getElementById('consent-overlay').style.display = "none";
+    document.body.style.overflow = '';
     insertVGWortPixel();
   }
   document.getElementById('cookie-decline').onclick = function() {
     setCookie('vgw_consent', "no", 365);
     document.getElementById('cookie-banner').style.display = "none";
+    document.getElementById('consent-overlay').style.display = "none";
+    document.body.style.overflow = '';
   }
 });
 </script>
