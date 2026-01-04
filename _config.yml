@@ -75,10 +75,9 @@ exclude:
   
   
 collections:
-projects:
-  output: true
-  permalink: /projects/:name/
-longreads:
-  output: true
-  permalink: /longreads/:name/
-
+  projects:
+    output: true
+    permalink: /projects/:name/
+  longreads:
+    output: true
+    permalink: /longreads/:name/
