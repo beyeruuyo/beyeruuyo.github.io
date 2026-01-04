@@ -5,11 +5,12 @@ title: Longreads
 
 <h1>Longreads</h1>
 <ul>
-  {% for longread in site.longreads %}
-    {% if longread.title %}
+  {% assign pages_in_longreads = site.pages | where_exp: "item", "item.path contains 'longreads/'" %}
+  {% for page in pages_in_longreads %}
+    {% if page.title and page.url != '/longreads/' %}
       <li>
-        <a href="{{ longread.url }}">{{ longread.title }}</a>
-        <small>{{ longread.date | date: "%d.%m.%Y" }}</small>
+        <a href="{{ page.url }}">{{ page.title }}</a>
+        <small>{% if page.date %}{{ page.date | date: "%d.%m.%Y" }}{% endif %}</small>
       </li>
     {% endif %}
   {% endfor %}
