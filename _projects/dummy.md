@@ -1,6 +1,11 @@
 ---
 layout: project
-title: "dummy"
-date: 2026-01-04
+title: dummy
+date: {}
 ---
-Hier kommen bald wundertolle Projekte
+---
+layout: default
+title: "Dummy"
+date: 2026-01-05
+---
+Bald richtig sicke Projekte
