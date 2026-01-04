@@ -23,6 +23,21 @@
 #cookie-accept { background: #14a7d0; color: #fff; }
 #cookie-decline { background: #888; color: #fff; }
 #cookie-banner a { color: #fff; text-decoration: underline; font-weight: bold; }
+
+#no-access {
+  display: none;
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(20,20,20,0.96); color: #fff; z-index: 10000;
+  font-size: 2.5rem; font-weight: bold;
+  text-align: center; padding-top: 22vh;
+  letter-spacing: 0.03em;
+}
+#no-access small {
+  display: block;
+  font-size: 1.2rem;
+  margin-top: 3rem;
+  font-weight: normal;
+}
 </style>
 
 <div id="consent-overlay"></div>
@@ -32,6 +47,14 @@
   <a href="/datenschutz.html" target="_blank">Mehr Infos</a><br>
   <button id="cookie-accept">Akzeptieren</button>
   <button id="cookie-decline">Ablehnen</button>
+</div>
+
+<div id="no-access">
+  Kein Zugriff ohne Cookie-Zustimmung.<br>
+  <small>
+    Bitte akzeptiere Cookies, um die Website zu nutzen.<br>
+    <a href="/datenschutz.html" style="color:#fff;text-decoration:underline;" target="_blank">Mehr Infos</a>
+  </small>
 </div>
 
 <script>
@@ -64,7 +87,8 @@ window.addEventListener('DOMContentLoaded', function(){
   if(getCookie('vgw_consent') === "yes") {
     insertVGWortPixel();
   } else if(getCookie('vgw_consent') === "no") {
-    // nichts tun
+    document.getElementById('no-access').style.display = "block";
+    document.body.style.overflow = 'hidden';
   } else {
     document.getElementById('cookie-banner').style.display = "block";
     document.getElementById('consent-overlay').style.display = "block";
@@ -74,6 +98,7 @@ window.addEventListener('DOMContentLoaded', function(){
     setCookie('vgw_consent', "yes", 365);
     document.getElementById('cookie-banner').style.display = "none";
     document.getElementById('consent-overlay').style.display = "none";
+    document.getElementById('no-access').style.display = "none";
     document.body.style.overflow = '';
     insertVGWortPixel();
   }
@@ -81,7 +106,8 @@ window.addEventListener('DOMContentLoaded', function(){
     setCookie('vgw_consent', "no", 365);
     document.getElementById('cookie-banner').style.display = "none";
     document.getElementById('consent-overlay').style.display = "none";
-    document.body.style.overflow = '';
+    document.getElementById('no-access').style.display = "block";
+    document.body.style.overflow = 'hidden';
   }
 });
 </script>
