@@ -74,8 +74,3 @@ exclude:
   - CNAME
   
   
-collections:
-  projects:
-    output: true
-  longreads:
-    output: true
