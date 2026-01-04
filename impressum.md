@@ -25,7 +25,7 @@ Adresse wie oben
 </p>
 
 <p>
-Bei Fragen zum Datenschutz siehe bitte <a href="/datenschutz.html">Datenschutzerklärung</a>.
+Bei Fragen zum Datenschutz siehe bitte <a href="/datenschutz">Datenschutzerklärung</a>.
 </p>
 
 <p style="margin-top:3em;font-size:90%;">
