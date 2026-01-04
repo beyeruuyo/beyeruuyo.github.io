@@ -5,10 +5,13 @@ title: Projects
 
 <h1>Projects</h1>
 <ul>
-  {% for project in site.projects %}
-    <li>
-      <a href="{{ project.url }}">{{ project.title }}</a>
-      <small>{{ project.date | date: "%d.%m.%Y" }}</small>
-    </li>
+  {% assign pages_in_projects = site.pages | where_exp: "item", "item.path contains 'projects/'" %}
+  {% for page in pages_in_projects %}
+    {% if page.title and page.url != '/projects/' %}
+      <li>
+        <a href="{{ page.url }}">{{ page.title }}</a>
+        <small>{% if page.date %}{{ page.date | date: "%d.%m.%Y" }}{% endif %}</small>
+      </li>
+    {% endif %}
   {% endfor %}
 </ul>
